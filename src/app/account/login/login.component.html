@@ -1,0 +1,23 @@
+<div class="fixed w-full h-full flex flex-col items-center justify-center">
+  <div class="w-3/12 h-2/6 flex flex-col items-center justify-center ">
+    <span>
+      <b>Login</b>
+    </span>
+    <br>
+    <form [formGroup]="loginForm" class="flex flex-col w-80 items-start justify-center">
+  
+      <input class="p-1 h-10 w-full border-2 border-fuchsia-600 rounded bg-fuchsia-100" type="email"
+        formControlName="email" placeholder="Insert email" />
+      <span *ngIf="loginForm.dirty && !loginForm.get('email').valid">Email is required</span>
+      <br>
+      <input class="p-1 h-10 w-full border-2 border-fuchsia-600 rounded bg-fuchsia-100" type="password"
+        formControlName="password" placeholder="Insert password" />
+      <span *ngIf="loginForm.dirty && !loginForm.get('password').valid">Password is required</span>
+      <br>
+      <button class="p-1 w-full bg-fuchsia-400 hover:bg-fuchsia-500 shadow-black shadow-md"
+        (click)="loginForm.valid && submitForm()">
+        Login
+      </button>
+    </form>
+  </div>
+</div>

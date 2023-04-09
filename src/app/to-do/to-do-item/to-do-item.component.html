@@ -1,0 +1,65 @@
+<span
+  class="
+    w-full
+    my-1
+    p-2
+    flex flex-row
+    justify-between
+    items-center
+    space-x-1
+    rounded
+    bg-sky-200
+  "
+>
+  <div class="flex flex-row space-x-1">
+    <button
+      (click)="check()"
+      class="
+        text-xl text-green-500
+        font-bold
+        p-1
+        h-8
+        w-8
+        rounded
+        bg-sky-100
+        hover:bg-sky-600
+        flex
+        items-center
+        justify-center
+      "
+    >
+      &check;
+    </button>
+    <span
+      class="
+        text-xl text-amber-600
+        w-52
+        font-bold
+        text-ellipsis
+        overflow-hidden
+      "
+      [title]="item"
+      [ngClass]="{ 'line-through': checked }"
+    >
+      {{ item.text }}
+    </span>
+  </div>
+  <button
+    (click)="remove()"
+    class="
+      text-xl text-amber-600
+      font-bold
+      p-1
+      h-8
+      w-8
+      rounded
+      bg-sky-100
+      hover:bg-sky-600
+      flex
+      items-center
+      justify-center
+    "
+  >
+    &times;
+  </button>
+</span>

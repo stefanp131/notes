@@ -1,0 +1,29 @@
+<div class="relative p-1 flex flex-row w-full h-16 shadow-black shadow-md items-center justify-between">
+  <div class="w-full flex flex-row p-2 items-center justify-between">
+    <div *ngIf="user$ | async as user; else empty" class="space-x-2">
+      <span>Hey {{ user.displayName }}!</span>
+      <button class="p-1 bg-fuchsia-400 hover:bg-fuchsia-500 shadow-black shadow-md" [routerLink]="['/']" routerLinkActive="router-link-active">Home</button>
+    </div>
+    <div class="center-title">
+      <span>Notes</span>
+    </div>
+
+    <div class="flex flex-row space-x-2">
+      <button class="p-1 bg-fuchsia-400 hover:bg-fuchsia-500 shadow-black shadow-md"
+        *ngIf="!(user$ | async)" [routerLink]="['/login']"
+        routerLinkActive="router-link-active">
+        Login
+      </button>
+      <button class="p-1 bg-amber-400 hover:bg-amber-500 shadow-black shadow-md"
+        *ngIf="user$  | async" (click)="logout()">
+        Logout
+      </button>
+      <button class="p-1 bg-fuchsia-400 hover:bg-fuchsia-500 shadow-black shadow-md" [routerLink]="['/register']"
+        routerLinkActive="router-link-active">
+        Register
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #empty><div></div></ng-template>

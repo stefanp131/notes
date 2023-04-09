@@ -1,0 +1,30 @@
+<div class="fixed w-full h-full flex flex-col items-center justify-center">
+  <div class="flex flex-row items-center justify-center">
+    <b>Register</b>
+  </div>
+  <br>
+  <form [formGroup]="registerForm" autocomplete="off" class="flex flex-col w-80 items-start justify-center">
+
+    <input class="p-1 h-10 w-full border-2 border-fuchsia-600 rounded bg-fuchsia-100" type="text"
+      formControlName="displayName" placeholder="Insert display name" />
+    <span *ngIf="registerForm.dirty && !registerForm.get('displayName').valid">Display Name is required</span>
+    <br>
+    <input class="p-1 h-10 w-full border-2 border-fuchsia-600 rounded bg-fuchsia-100" type="email"
+      formControlName="email" placeholder="Insert email" />
+    <span *ngIf="registerForm.dirty && !registerForm.get('email').valid">Email is required</span>
+    <br>
+    <input class="p-1 h-10 w-full border-2 border-fuchsia-600 rounded bg-fuchsia-100" type="password"
+      formControlName="password" placeholder="Insert password" />
+    <span *ngIf="registerForm.dirty && !registerForm.get('password').valid">Password is required</span>
+    <br>
+    <input class="p-1 h-10 w-full border-2 border-fuchsia-600 rounded bg-fuchsia-100" type="password" #confirmPassword
+      placeholder="Insert password again" />
+    <span *ngIf="registerForm.dirty && registerForm.get('password').value !== confirmPassword.value">Password is
+      required</span>
+    <br>
+    <button class="p-1 w-full bg-fuchsia-400 hover:bg-fuchsia-500 shadow-black shadow-md"
+      (click)="registerForm.valid && submitForm()">
+      Register
+    </button>
+  </form>
+</div>

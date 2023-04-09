@@ -1,0 +1,21 @@
+<div class="p-1 flex items-center justify-center">
+  <div
+    class="
+      my-1
+      p-2
+      flex flex-col
+      justify-center
+      items-start
+      bg-sky-400
+      w-80
+      rounded
+    "
+  >
+    <span *ngIf="!(list | async).length">No Items</span>
+    <to-do-item
+      class="w-full"
+      *ngFor="let item of list | async"
+      [item]="item"
+    ></to-do-item>
+  </div>
+</div>

@@ -1,6 +1,5 @@
 <div class="p-1 flex items-center justify-center">
-  <div
-    class="
+  <div *ngIf="(list | async) as list; else loading" class="
       my-1
       p-2
       flex flex-col
@@ -9,13 +8,20 @@
       bg-sky-400
       w-80
       rounded
-    "
-  >
-    <span *ngIf="!(list | async).length">No Items</span>
-    <to-do-item
-      class="w-full"
-      *ngFor="let item of list | async"
-      [item]="item"
-    ></to-do-item>
+    ">
+    <span *ngIf="list.length === 0">No Items</span>
+
+    <to-do-item class="w-full" *ngFor="let item of list" [item]="item"></to-do-item>
   </div>
 </div>
+
+<ng-template #loading>
+  <div class=" my-1
+  p-2
+  flex flex-col
+  justify-center
+  items-start
+  bg-sky-400
+  w-80
+  rounded">Loading...</div>
+</ng-template>

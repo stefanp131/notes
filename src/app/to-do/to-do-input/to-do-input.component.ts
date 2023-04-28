@@ -21,6 +21,6 @@ export class ToDoInputComponent {
   }
 
   submit() {
-    this.todoService.addItem(this.toDoForm.get('toDoItemInput').value);
+    this.todoService.addItem(this.toDoForm.get('toDoItemInput').value);    
   }
 }

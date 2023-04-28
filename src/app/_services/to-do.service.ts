@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, from, map } from 'rxjs';
-import { Item } from '../_models/ToDoItem';
+import { ToDo } from '../_models/ToDoItem';
 import {
   Firestore,
   addDoc,
@@ -23,7 +23,7 @@ export class TodoService {
 
   addItem(value: string) {
     const toDoItemsCollection = collection(this.firestore, 'toDoItems');
-    addDoc(toDoItemsCollection, <Item>{ text: value }).then(() =>
+    addDoc(toDoItemsCollection, <ToDo>{ text: value }).then(() =>
       this.listHasBeenUpdated()
     );
   }
@@ -38,7 +38,7 @@ export class TodoService {
     this.list.next(true);
   }
 
-  getList(): Observable<Item[]> {
+  getList(): Observable<ToDo[]> {
     const toDoItemsCollection = collection(this.firestore, 'toDoItems');
     const q = query(toDoItemsCollection);
     const result = from(getDocs(q)).pipe(
@@ -47,7 +47,7 @@ export class TodoService {
           return {
             id: docm.id,
             ...docm.data(),
-          } as Item;
+          } as ToDo;
         })
       )
     );
